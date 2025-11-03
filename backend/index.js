@@ -14,6 +14,10 @@ Category.hasMany(Product);
 
 const app = express();
 app.use(express.static('public'))
+const path = require('path');
+
+// Сервируем статику из frontend/build
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 app.use(cors({
     origin: '*'
 }));
@@ -28,7 +32,9 @@ app.use('/order', order);
 
 
 app.use(express.json());
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 const start = async () =>{
     try{
         await sequelize.sync().then(
