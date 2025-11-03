@@ -128,9 +128,3 @@ markdown# Итоговая работа Introduction to JavaScript Frameworks
     │   │   └── App.scss
     │   └── package.json
     └── README.md
-
-## Запуск локально
-1. Клонируй репозиторий:
-   ```bash
-   git clone https://github.com/chubenkoam24ithub/Introduction-to-JavaScript-Frameworks.git
-   cd Introduction-to-JavaScript-Frameworks
