@@ -49,3 +49,36 @@
 👉 [**https://introduction-to-javascript-frameworks.onrender.com**](https://introduction-to-javascript-frameworks.onrender.com)
 
 ## Структура проекта
+└── Introduction-to-JavaScript-Frameworks/
+├── backend/
+│   ├── database/
+│   │   ├── database.js
+│   │   └── models/
+│   │       ├── category.js
+│   │       └── product.js
+│   ├── routes/
+│   │   ├── categories.js
+│   │   ├── order.js
+│   │   ├── products.js
+│   │   └── sale.js
+│   ├── index.js
+│   └── package.json
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── asyncActions/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── store/
+│   │   ├── UI/
+│   │   ├── App.jsx
+│   │   └── App.scss
+│   └── package.json
+└── README.md
+
+## Запуск локально
+1. Клонируй репозиторий:
+   ```bash
+   git clone https://github.com/chubenkoam24ithub/Introduction-to-JavaScript-Frameworks.git
+   cd Introduction-to-JavaScript-Frameworks
