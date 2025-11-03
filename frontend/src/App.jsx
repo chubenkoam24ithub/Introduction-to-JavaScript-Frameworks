@@ -46,7 +46,7 @@ export default App;
 
 
 export const BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://introduction-to-javascript-frameworks.onrender.com/'  // потом заменишь
+  ? 'https://introduction-to-javascript-frameworks.onrender.com'  // потом заменишь
   : 'http://localhost:3333';
 
 export const countDiscountPercent = (price, discont_price) => Math.round((price - discont_price) / price * 100);
