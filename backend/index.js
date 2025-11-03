@@ -8,32 +8,35 @@ const sequelize = require('./database/database');
 const cors = require('cors')
 const Category = require('./database/models/category');
 const Product = require('./database/models/product');
-const PORT = process.env.PORT || 3333;
 
 Category.hasMany(Product);
+Product.belongsTo(Category); // Добавил для полной связи
 
 const app = express();
-app.use(express.static('public'))
-const path = require('path');
+const PORT = process.env.PORT || 3333;
 
-// Сервируем статику из frontend/build
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
-app.use(cors({
-    origin: '*'
-}));
+// Middleware (в правильном порядке)
+app.use(cors({ origin: '*' }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(express.urlencoded());
+// Сервируем статику фронтенда (из build)
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'build');
+app.use(express.static(frontendBuildPath));
+
+// API роуты (ДО catch-all!)
 app.use('/categories', categories);
 app.use('/products', products);
 app.use('/sale', sale);
 app.use('/order', order);
 
-
-
-
-app.use(express.json());
+// Catch-all для React Router (SPA)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+  res.sendFile(path.join(frontendBuildPath, 'index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 const start = async () =>{
     try{
